@@ -6,7 +6,6 @@ import com.deepjyot.repository.UserRepository;
 import com.deepjyot.user.UserInformation;
 import com.deepjyot.user.UserInformationRequest;
 import com.deepjyot.util.EntityMessageMapper;
-import io.grpc.stub.StreamObserver;
 import org.springframework.stereotype.Service;
 
 @Service

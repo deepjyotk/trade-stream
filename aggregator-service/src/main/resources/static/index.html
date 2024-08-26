@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f7f6;
+        }
+
+        h1 {
+            font-weight: 700;
+            color: #343a40;
+        }
+
+        .card {
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-header {
+            font-weight: bold;
+            background: linear-gradient(135deg, #72edf2 10%, #5151e5 100%);
+            color: white;
+            border-radius: 12px 12px 0 0;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: #5151e5;
+        }
+
+        .btn {
+            border-radius: 50px;
+            padding: 10px 20px;
+            font-weight: 500;
+        }
+
+        .btn-success {
+            background-color: #28a745;
+            border-color: #28a745;
+        }
+
+        .btn-success:hover {
+            background-color: #218838;
+        }
+
+        .btn-warning {
+            background-color: #ffc107;
+            border-color: #ffc107;
+        }
+
+        .btn-warning:hover {
+            background-color: #e0a800;
+        }
+
+        #profile-card {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 12px;
+        }
+
+        #profile-card img {
+            border-radius: 50%;
+            width: 80px;
+            margin-bottom: 10px;
+        }
+
+        .alert {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1050;
+            opacity: 0.95;
+            border-radius: 12px;
+        }
+
+        table {
+            background-color: #ffffff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 15px;
+        }
+    </style>
+    <title>Trade Stream</title>
+</head>
+<body>
+
+<div class="jumbotron text-center mt-3">
+    <h1>Trade Stream</h1>
+</div>
+
+<div class="container-lg">
+
+    <div class="row mt-3">
+        <div class="col-sm-3">
+            <div class="card">
+                <div class="card-header text-center">
+                    <strong>APPLE</strong>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title text-center" id="APPLE">$150</h5>
+                    <div class="row">
+                        <div class="col" align="left"><a href="#" class="btn btn-success" onclick="trade('APPLE', 'BUY')">Buy</a></div>
+                        <div class="col" align="right"><a href="#" class="btn btn-warning" onclick="trade('APPLE', 'SELL')">Sell</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card">
+                <div class="card-header text-center">
+                    <strong>AMAZON</strong>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title text-center" id="AMAZON">$29</h5>
+                    <div class="row">
+                        <div class="col" align="left"><a href="#" class="btn btn-success" onclick="trade('AMAZON', 'BUY')">Buy</a></div>
+                        <div class="col" align="right"><a href="#" class="btn btn-warning" onclick="trade('AMAZON', 'SELL')">Sell</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-3">
+            <div class="card">
+                <div class="card-header text-center">
+                    <strong>GOOGLE</strong>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title text-center" id="GOOGLE">$639</h5>
+                    <div class="row">
+                        <div class="col" align="left"><a href="#" class="btn btn-success" onclick="trade('GOOGLE', 'BUY')">Buy</a></div>
+                        <div class="col" align="right"><a href="#" class="btn btn-warning" onclick="trade('GOOGLE', 'SELL')">Sell</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-3">
+            <div class="card">
+                <div class="card-header text-center">
+                    <strong>MICROSOFT</strong>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title text-center" id="MICROSOFT">$422</h5>
+                    <div class="row">
+                        <div class="col" align="left"><a href="#" class="btn btn-success" onclick="trade('MICROSOFT', 'BUY')">Buy</a></div>
+                        <div class="col" align="right"><a href="#" class="btn btn-warning" onclick="trade('MICROSOFT', 'SELL')">Sell</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row mt-3">
+
+        <div class="col-sm-3">
+
+            <div id="profile-card" class="card w-100">
+                <div class="card-header">
+                    Profile
+                </div>
+                <div class="card-body text-center">
+                    <img src="stock-trader-image.jpg" alt="Profile Picture">
+                    <h5 class="card-title" id="user-profile-name">Sam</h5>
+                    <div class="row mt-3">
+                        <div class="col text-start" style="width: 60%; flex:none">
+                            <strong>Available Balance</strong>
+                        </div>
+                        <div class="col text-end" style="width: 40%;" id="user-available-balance">
+                            $10000
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col text-start" style="width: 60%; flex:none">
+                            <strong>Portfolio Value</strong>
+                        </div>
+                        <div class="col text-end" style="width: 40%;" id="user-portfolio-value">
+                            <p class="text-success">$10000</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-sm-9">
+
+            <div class="card w-100">
+                <div class="card-header">
+                    Portfolio
+                </div>
+                <div class="card-body">
+
+                    <table class="table" id="user-portfolio">
+                        <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Stock</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Current Value</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+        </div>
+        <div id="alerts" class="mt-3">
+        </div>
+
+    </div>
+
+
+    <script>
+
+        // get user id
+        const params = new URLSearchParams(window.location.search);
+        const userId = params.get('user');
+        let stockPrices = {};
+        let userPortfolioValue = {};
+        console.log(userId);
+
+        // elements
+        const userProfileNameElement = document.getElementById('user-profile-name');
+        const userPortfolioValueElement = document.getElementById('user-portfolio-value');
+        const userAvailableBalanceElement = document.getElementById('user-available-balance');
+        const userPortfolioContainer = document.getElementById('user-portfolio').querySelector('tbody');
+        const alerts = document.getElementById('alerts');
+
+        // get price updates
+        const stockPriceUpdates = () => {
+            var source = new EventSource("/stock/updates");
+            source.onmessage = (evt) => {
+                let event = JSON.parse(evt.data);
+                let element = document.getElementById(event.ticker);
+                element.innerText = `$${event.price}`;
+                stockPrices[event.ticker] = event.price;
+                let userQuantity = document.getElementById(`user-quantity-${event.ticker}`);
+                if(userQuantity){
+                    let q = parseInt(userQuantity.innerText);
+                    let price = q * event.price;
+                    document.getElementById(`user-value-${event.ticker}`).innerText = `$${price}`;
+                    userPortfolioValue[event.ticker] = price;
+                    updateUserPortfolioDisplayValue();
+                }
+            };
+        };
+
+        // get user information & portfolio
+        const fetchUserInformation = async () => {
+            const response = await fetch(`/user/${userId}`);
+            const user = await response.json();
+            userProfileNameElement.innerText = user.name;
+            userAvailableBalanceElement.innerText = `$${user.balance}`;
+            while(userPortfolioContainer.firstChild){
+                userPortfolioContainer.removeChild(userPortfolioContainer.firstChild);
+            }
+            user.holdings.map((holding, index) => getPortfolioRow(holding, index)).forEach((holding) => userPortfolioContainer.append(holding));
+            user.holdings.forEach(holding => userPortfolioValue[holding.ticker] = (holding.quantity * getStockPriceFromCache(holding.ticker)));
+            userPortfolioValue['BALANCE'] = user.balance;
+            console.log(userPortfolioValue);
+            updateUserPortfolioDisplayValue();
+        }
+
+        const updateUserPortfolioDisplayValue = () => {
+            const sum = Object.values(userPortfolioValue).reduce((acc, val) => acc + val, 0);
+            if(sum >= 10000){
+                userPortfolioValueElement.innerHTML = `<p class="text-success">$${sum}</p>`;
+            }else{
+                userPortfolioValueElement.innerHTML = `<p class="text-danger">$${sum}</p>`;
+            }
+        };
+
+        const getPortfolioRow = (holding, index) => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                            <th scope="row">${index + 1}</th>
+                            <td>${holding.ticker}</td>
+                            <td id="user-quantity-${holding.ticker}">${holding.quantity}</td>
+                            <td id="user-value-${holding.ticker}">$${holding.quantity * getStockPriceFromCache(holding.ticker) }</td>
+            `;
+            return tr;
+        }
+
+        const getStockPriceFromCache = (ticker) => {
+            return stockPrices[ticker] ? stockPrices[ticker] : 0;
+        }
+
+        const trade = async (ticker, action) => {
+            const response = await fetch('/trade', {
+                    method : "POST",
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        userId,
+                        ticker,
+                        action,
+                        quantity: 1
+                    })
+            });
+            if(response.ok){
+                const data = await response.json();
+                // we might need updated user balance & portfolio
+                fetchUserInformation();
+            }else{
+                const data = await response.text();
+                showAlert(data, 'danger');
+            }
+
+        };
+
+        const showAlert = (msg, level) => {
+            const div = document.createElement('div');
+            div.innerHTML = `
+                <div class="alert alert-${level} alert-dismissible" role="alert">
+                    ${msg}
+                </div>
+            `;
+            alerts.append(div);
+            setTimeout(() => {
+                div.remove();
+            }, 3000);
+        };
+
+        // trigger these functions on page load
+        document.addEventListener("DOMContentLoaded", () => {
+            stockPriceUpdates();
+            fetchUserInformation();
+        });
+
+
+
+    </script>
+
+</div>
+<!-- Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
