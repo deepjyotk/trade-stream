@@ -10,7 +10,6 @@ import com.deepjyot.repository.UserRepository;
 import com.deepjyot.user.StockTradeRequest;
 import com.deepjyot.user.StockTradeResponse;
 import com.deepjyot.util.EntityMessageMapper;
-import io.grpc.InternalGlobalInterceptors;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
